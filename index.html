@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recall - Retrieval practice</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="./js/app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recall - Retrieval practice</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="./js/app.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <h1>Recall</h1>
-    <nav>
-      <button data-view="bank" class="active">Question bank</button>
-      <button data-view="quiz">Quiz</button>
-      <button data-view="review">Review</button>
-    </nav>
-  </header>
+    <header>
+        <h1>Recall</h1>
+        <nav>
+            <button data-view="bank" class="active">Question bank</button>
+            <button data-view="quiz">Quiz</button>
+            <button data-view="review">Review</button>
+        </nav>
+    </header>
 
-  <main>
-    <section id="bank" class="view active">
-      <h2>Question bank</h2>
-    </section>
+    <main>
+        <section id="bank" class="view active">
+            <h2>Question bank</h2>
+        </section>
 
-    <section id="quiz" class="view">
-      <h2>Quiz</h2>
-    </section>
+        <section id="quiz" class="view">
+            <h2>Quiz</h2>
 
-    <section id="review" class="view">
-      <h2>Teacher review</h2>
-    </section>
-  </main>
+            <div class="card quiz-setup">
+                <label>Topic
+                    <select id="quiz-topic"></select>
+                </label>
+                <label>Number of questions
+                    <input id="quiz-size" type="number" min="1" value="5">
+                </label>
+                <button id="generate-quiz" class="primary">Generate quiz</button>
+            </div>
+
+            <p id="quiz-message"></p>
+            <form id="quiz-form"></form>
+        </section>
+    </main>
 </body>
+
 </html>
