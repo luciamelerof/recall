@@ -4,70 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recall - Retrieval practice</title>
+    <title>Recall – Retrieval practice for your class</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Caveat:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="./js/storage.js" defer></script>
     <script src="./js/app.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <h1>Recall</h1>
-        <nav>
+    <div class="page">
+        <header>
+            <h1>Recall</h1>
+            <p>Quick quizzes that help your class remember what they learned weeks ago.</p>
+        </header>
+
+        <nav class="tabs">
             <button data-view="bank" class="active">Question bank</button>
             <button data-view="quiz">Quiz</button>
             <button data-view="review">Review</button>
         </nav>
-    </header>
 
-    <main>
-        <section id="bank" class="view active">
-            <h2>Question bank</h2>
+        <main class="sheet">
+            <section id="bank" class="view active">
+                <h2>Question bank</h2>
 
-            <form id="question-form" class="card">
-                <label>Topic
-                    <input id="q-topic" required placeholder="e.g. Photosynthesis">
-                </label>
-                <label>Question
-                    <input id="q-text" required placeholder="e.g. What gas do plants absorb?">
-                </label>
-                <label>Answer
-                    <input id="q-answer" required placeholder="e.g. Carbon dioxide">
-                </label>
-                <button type="submit" class="primary">Add question</button>
-            </form>
+                <form id="question-form" class="card">
+                    <label>Topic
+                        <input id="q-topic" required placeholder="e.g. Photosynthesis">
+                    </label>
+                    <label>Question
+                        <input id="q-text" required placeholder="e.g. What gas do plants absorb?">
+                    </label>
+                    <label>Answer
+                        <input id="q-answer" required placeholder="e.g. Carbon dioxide">
+                    </label>
+                    <button type="submit" class="primary">Add question</button>
+                </form>
 
-            <p id="bank-count"></p>
-            <button id="load-samples" class="secondary">Load sample questions</button>
-            <ul id="question-list"></ul>
-        </section>
+                <p id="bank-count"></p>
+                <button id="load-samples" class="secondary">Add example questions</button>
+                <ul id="question-list"></ul>
+            </section>
 
-        <section id="quiz" class="view">
-            <h2>Quiz</h2>
+            <section id="quiz" class="view">
+                <h2>Quiz</h2>
 
-            <div class="card quiz-setup">
-                <label>Topic
-                    <select id="quiz-topic"></select>
-                </label>
-                <label>Number of questions
-                    <input id="quiz-size" type="number" min="1" value="5">
-                </label>
-                <button id="generate-quiz" class="primary">Generate quiz</button>
-            </div>
+                <div class="card quiz-setup">
+                    <label>Topic
+                        <select id="quiz-topic"></select>
+                    </label>
+                    <label>Number of questions
+                        <input id="quiz-size" type="number" min="1" value="5">
+                    </label>
+                    <button id="generate-quiz" class="primary">Start quiz</button>
+                </div>
 
-            <p id="quiz-message"></p>
-            <form id="quiz-form"></form>
-        </section>
+                <p id="quiz-message"></p>
+                <form id="quiz-form"></form>
+            </section>
 
-        <section id="review" class="view">
-            <h2>Teacher review</h2>
+            <section id="review" class="view">
+                <h2>Teacher review</h2>
 
-            <div id="stats" class="card"></div>
+                <div id="stats" class="card"></div>
 
-            <h3>Pending review</h3>
-            <div id="review-list"></div>
-        </section>
-    </main>
+                <h3>Waiting for your marks</h3>
+                <div id="review-list"></div>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>

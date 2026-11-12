@@ -149,7 +149,7 @@ function renderQuiz() {
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
     submitBtn.className = 'primary';
-    submitBtn.textContent = 'Submit answers';
+    submitBtn.textContent = 'Mark my answers';
     quizForm.append(submitBtn);
 }
 
@@ -227,9 +227,9 @@ quizForm.addEventListener('submit', event => {
 
 function renderResults(results) {
     const labels = {
-        correct: '✅ Correct',
-        close: '🟡 Close: needs teacher review',
-        incorrect: '❌ Incorrect'
+        correct: '✓ Correct',
+        close: '~ Almost: your teacher will check this',
+        incorrect: '✗ Not quite'
     };
 
     const correctCount = results.filter(r => r.auto === 'correct').length;
@@ -289,7 +289,7 @@ function renderReview() {
         .reverse(); // newest first
 
     if (pending.length === 0) {
-        reviewList.textContent = 'Nothing to review 🎉';
+        reviewList.textContent = 'All caught up. New quizzes will appear here.';
     }
 
     pending.forEach(attempt => {
@@ -304,7 +304,7 @@ function renderReview() {
 
         const acceptBtn = document.createElement('button');
         acceptBtn.className = 'primary';
-        acceptBtn.textContent = 'Accept clear auto-marks';
+        acceptBtn.textContent = 'Confirm clear marks';
         acceptBtn.addEventListener('click', () => acceptClearMarks(attempt.id));
 
         header.append(title, acceptBtn);
@@ -331,12 +331,12 @@ function renderReview() {
 
             const okBtn = document.createElement('button');
             okBtn.className = 'primary';
-            okBtn.textContent = '✅ Correct';
+            okBtn.textContent = 'Mark correct';
             okBtn.addEventListener('click', () => setFinal(attempt.id, index, 'correct'));
 
             const noBtn = document.createElement('button');
             noBtn.className = 'danger';
-            noBtn.textContent = '❌ Incorrect';
+            noBtn.textContent = 'Mark incorrect';
             noBtn.addEventListener('click', () => setFinal(attempt.id, index, 'incorrect'));
 
             actions.append(okBtn, noBtn);
@@ -354,7 +354,7 @@ function renderStats() {
     statsBox.innerHTML = '';
 
     const title = document.createElement('h3');
-    title.textContent = 'Results by topic (teacher-confirmed)';
+    title.textContent = 'How the class is doing';
     statsBox.append(title);
 
     const marked = attempts
@@ -363,7 +363,7 @@ function renderStats() {
 
     if (marked.length === 0) {
         const empty = document.createElement('p');
-        empty.textContent = 'No confirmed marks yet.';
+        empty.textContent = 'Confirm some marks below to see results by topic.';
         statsBox.append(empty);
         return;
     }
