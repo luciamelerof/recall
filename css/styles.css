@@ -144,3 +144,27 @@ select {
 .quiz-question label {
     margin-top: 0.5rem;
 }
+
+.result {
+    border-left: 6px solid #d0d3dc;
+}
+
+.result p {
+    margin: 0.3rem 0;
+}
+
+.result-question {
+    font-weight: 600;
+}
+
+.result-correct {
+    border-left-color: #30a46c;
+}
+
+.result-close {
+    border-left-color: #f5a623;
+}
+
+.result-incorrect {
+    border-left-color: #e5484d;
+}

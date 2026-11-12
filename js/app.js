@@ -153,7 +153,108 @@ function renderQuiz() {
   quizForm.append(submitBtn);
 }
 
+// Auto-marking
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove accents
+    .replace(/[^a-z0-9\s]/g, '')     // remove punctuation
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Minimum number of edits to turn a into b
+function levenshtein(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,       // delete
+        dp[i][j - 1] + 1,       // insert
+        dp[i - 1][j - 1] + cost // replace
+      );
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+function autoMark(given, expected) {
+  const a = normalize(given);
+  const b = normalize(expected);
+
+  if (a === '') return 'incorrect';
+  if (a === b) return 'correct';
+
+  const similarity = 1 - levenshtein(a, b) / Math.max(a.length, b.length);
+  return similarity >= 0.8 ? 'close' : 'incorrect';
+}
+
+// Submit quiz
+let attempts = loadAttempts();
+
 quizForm.addEventListener('submit', event => {
   event.preventDefault();
-  // Step 4: check answers
+  if (currentQuiz.length === 0) return;
+
+  const results = currentQuiz.map(q => {
+    const given = quizForm.querySelector(`input[name="${q.id}"]`).value;
+    return {
+      questionId: q.id,
+      question: q.text,
+      topic: q.topic,
+      expected: q.answer,
+      given,
+      auto: autoMark(given, q.answer),
+      final: null // the teacher confirms it in step 5
+    };
+  });
+
+  attempts.push({
+    id: Date.now().toString(),
+    date: new Date().toISOString(),
+    results
+  });
+  saveAttempts(attempts);
+
+  currentQuiz = [];
+  renderResults(results);
 });
+
+function renderResults(results) {
+  const labels = {
+    correct: '✅ Correct',
+    close: '🟡 Close: needs teacher review',
+    incorrect: '❌ Incorrect'
+  };
+
+  const correctCount = results.filter(r => r.auto === 'correct').length;
+  quizMessage.textContent =
+    `Auto-marked: ${correctCount}/${results.length} correct. Your teacher will confirm the final marks.`;
+
+  quizForm.innerHTML = '';
+
+  results.forEach((r, index) => {
+    const card = document.createElement('div');
+    card.className = `card result result-${r.auto}`;
+
+    const question = document.createElement('p');
+    question.className = 'result-question';
+    question.textContent = `${index + 1}. ${r.question}`;
+
+    const given = document.createElement('p');
+    given.textContent = `Your answer: ${r.given || '(blank)'}`;
+
+    const expected = document.createElement('p');
+    expected.textContent = `Expected: ${r.expected}`;
+
+    const verdict = document.createElement('strong');
+    verdict.textContent = labels[r.auto];
+
+    card.append(question, given, expected, verdict);
+    quizForm.append(card);
+  });
+}
