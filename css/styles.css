@@ -50,3 +50,97 @@ main {
 .view.active {
     display: block;
 }
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+form.card {
+    display: grid;
+    gap: 0.75rem;
+}
+
+label {
+    display: grid;
+    gap: 0.25rem;
+    font-weight: 600;
+}
+
+input {
+    padding: 0.6rem;
+    border: 1px solid #d0d3dc;
+    border-radius: 8px;
+    font: inherit;
+}
+
+button.primary,
+button.danger {
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font: inherit;
+    color: white;
+}
+
+button.primary {
+    background: #4f46e5;
+}
+
+button.danger {
+    background: #e5484d;
+}
+
+#question-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.question-item p {
+    margin: 0.4rem 0;
+}
+
+.tag {
+    background: #eef0ff;
+    color: #4f46e5;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+select {
+    padding: 0.6rem;
+    border: 1px solid #d0d3dc;
+    border-radius: 8px;
+    font: inherit;
+    background: white;
+}
+
+.quiz-setup {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+#quiz-form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.quiz-question label {
+    margin-top: 0.5rem;
+}

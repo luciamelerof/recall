@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recall - Retrieval practice</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="./js/storage.js" defer></script>
     <script src="./js/app.js" defer></script>
 </head>
 
@@ -22,6 +23,22 @@
     <main>
         <section id="bank" class="view active">
             <h2>Question bank</h2>
+
+            <form id="question-form" class="card">
+                <label>Topic
+                    <input id="q-topic" required placeholder="e.g. Photosynthesis">
+                </label>
+                <label>Question
+                    <input id="q-text" required placeholder="e.g. What gas do plants absorb?">
+                </label>
+                <label>Answer
+                    <input id="q-answer" required placeholder="e.g. Carbon dioxide">
+                </label>
+                <button type="submit" class="primary">Add question</button>
+            </form>
+
+            <p id="bank-count"></p>
+            <ul id="question-list"></ul>
         </section>
 
         <section id="quiz" class="view">
@@ -39,6 +56,10 @@
 
             <p id="quiz-message"></p>
             <form id="quiz-form"></form>
+        </section>
+
+        <section id="review" class="view">
+            <h2>Teacher review</h2>
         </section>
     </main>
 </body>
