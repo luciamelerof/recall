@@ -397,3 +397,21 @@ function renderStats() {
 }
 
 renderReview();
+
+// Sample data
+document.getElementById('load-samples').addEventListener('click', () => {
+  const existing = new Set(questions.map(q => q.text));
+
+  SAMPLE_QUESTIONS
+    .filter(s => !existing.has(s.text)) // avoid duplicates
+    .forEach((s, i) => {
+      questions.push({
+        id: `${Date.now()}-${i}`,
+        ...s,
+        createdAt: new Date().toISOString()
+      });
+    });
+
+  saveQuestions(questions);
+  renderBank();
+});

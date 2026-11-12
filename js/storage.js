@@ -19,3 +19,13 @@ function loadAttempts() {
 function saveAttempts(attempts) {
     localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts));
 }
+
+// Examples
+const SAMPLE_QUESTIONS = [
+  { topic: 'Biology', text: 'What gas do plants absorb during photosynthesis?', answer: 'Carbon dioxide' },
+  { topic: 'Biology', text: 'What part of the cell contains the genetic material?', answer: 'Nucleus' },
+  { topic: 'Geography', text: 'What is the capital of Australia?', answer: 'Canberra' },
+  { topic: 'Geography', text: 'What is the longest river in the United Kingdom?', answer: 'Severn' },
+  { topic: 'Computing', text: 'What does HTML stand for?', answer: 'HyperText Markup Language' },
+  { topic: 'Computing', text: 'Which data structure works as First In, First Out?', answer: 'Queue' }
+];
