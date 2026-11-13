@@ -41,4 +41,4 @@ Then open `index.html` in your browser.
 
 ## Author
 
-Lucía Melero Fernández · Web Application Development student (Granada, Spain)
+Lucía Melero Fernández - Web Application Development student (Granada, Spain)
