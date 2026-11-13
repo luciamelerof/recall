@@ -1,21 +1,28 @@
 :root {
-  --ink: #1b2a4a;        /* fountain-pen navy */
+  --ink: #1b2a4a;
+  /* fountain-pen navy */
   --muted: #5b6b85;
   --paper: #ffffff;
   --desk: #eef3f9;
-  --grid: #dde7f2;       /* maths book squares */
+  --grid: #dde7f2;
+  /* maths book squares */
   --rule: #cfdbea;
-  --margin: #f0a39b;     /* exercise book margin */
-  --green: #11795a;      /* teacher's marking pen */
+  --margin: #f0a39b;
+  /* exercise book margin */
+  --green: #11795a;
+  /* teacher's marking pen */
   --red: #c8372d;
-  --highlight: #ffe36e;  /* highlighter */
+  --highlight: #ffe36e;
+  /* highlighter */
 
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
   --font-hand: 'Caveat', cursive;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -37,7 +44,9 @@ body {
 }
 
 /* Header */
-header { margin-bottom: 1.75rem; }
+header {
+  margin-bottom: 1.75rem;
+}
 
 header h1 {
   font-family: var(--font-display);
@@ -110,8 +119,13 @@ h3 {
   margin: 2rem 0 0.75rem;
 }
 
-.view { display: none; }
-.view.active { display: block; }
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
 
 /* Boxed areas */
 form.card,
@@ -123,7 +137,9 @@ form.card,
   padding: 1.25rem 1.4rem;
 }
 
-#stats h3 { margin-top: 0; }
+#stats h3 {
+  margin-top: 0;
+}
 
 form.card {
   display: grid;
@@ -149,7 +165,9 @@ input {
   padding: 0.45rem 0.1rem;
 }
 
-input::placeholder { color: #9aa8bd; }
+input::placeholder {
+  color: #9aa8bd;
+}
 
 select {
   font: inherit;
@@ -182,7 +200,9 @@ button.primary {
   font-weight: 700;
 }
 
-button.primary:hover { background: #2b3f6b; }
+button.primary:hover {
+  background: #2b3f6b;
+}
 
 button.secondary {
   background: transparent;
@@ -207,7 +227,9 @@ button.danger {
   outline-offset: 2px;
 }
 
-form.card button.primary { justify-self: start; }
+form.card button.primary {
+  justify-self: start;
+}
 
 /* Question bank */
 #bank-count {
@@ -215,7 +237,9 @@ form.card button.primary { justify-self: start; }
   margin: 1.75rem 0 0.5rem;
 }
 
-#load-samples { margin-bottom: 1rem; }
+#load-samples {
+  margin-bottom: 1rem;
+}
 
 #question-list {
   list-style: none;
@@ -266,7 +290,9 @@ form.card button.primary { justify-self: start; }
   margin: 1.25rem 0 0.5rem;
 }
 
-#quiz-form { display: grid; }
+#quiz-form {
+  display: grid;
+}
 
 .quiz-question {
   padding: 1rem 0;
@@ -278,7 +304,7 @@ form.card button.primary { justify-self: start; }
   font-size: 1.05rem;
 }
 
-#quiz-form > button.primary {
+#quiz-form>button.primary {
   justify-self: start;
   margin-top: 1.25rem;
 }
@@ -289,8 +315,13 @@ form.card button.primary { justify-self: start; }
   border-bottom: 1px solid var(--rule);
 }
 
-.result p { margin: 0.15rem 0; }
-.result-question { font-weight: 700; }
+.result p {
+  margin: 0.15rem 0;
+}
+
+.result-question {
+  font-weight: 700;
+}
 
 .result strong {
   display: inline-block;
@@ -301,8 +332,13 @@ form.card button.primary { justify-self: start; }
   transform: rotate(-2deg);
 }
 
-.result-correct strong { color: var(--green); }
-.result-incorrect strong { color: var(--red); }
+.result-correct strong {
+  color: var(--green);
+}
+
+.result-incorrect strong {
+  color: var(--red);
+}
 
 .result-close strong {
   color: var(--ink);
@@ -342,7 +378,9 @@ form.card button.primary { justify-self: start; }
 }
 
 /* ---------- Stats ---------- */
-.stat-row { margin: 0.8rem 0; }
+.stat-row {
+  margin: 0.8rem 0;
+}
 
 .bar {
   height: 12px;
@@ -359,16 +397,43 @@ form.card button.primary { justify-self: start; }
 
 /* Mobile */
 @media (max-width: 640px) {
-  header h1 { font-size: 2.4rem; }
+  header h1 {
+    font-size: 2.4rem;
+  }
 
-  main.sheet { padding: 1.5rem 1.1rem 2rem 2.4rem; }
-  main.sheet::before { left: 1.4rem; }
+  main.sheet {
+    padding: 1.5rem 1.1rem 2rem 2.4rem;
+  }
 
-  .quiz-setup { grid-template-columns: 1fr; }
-  .question-item { align-items: flex-start; }
+  main.sheet::before {
+    left: 1.4rem;
+  }
+
+  .quiz-setup {
+    grid-template-columns: 1fr;
+  }
+
+  .question-item {
+    align-items: flex-start;
+  }
 
   nav.tabs button {
     padding: 0.5rem 0.8rem;
     font-size: 0.95rem;
   }
+}
+
+.storage-mode {
+  font-size: 0.9rem;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.error-banner {
+  background: #fdecea;
+  color: var(--red);
+  border-left: 4px solid var(--red);
+  padding: 0.6rem 0.9rem;
+  border-radius: 4px;
+  font-weight: 700;
 }

@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Caveat:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/marking.js" defer></script>
     <script src="./js/storage.js" defer></script>
     <script src="./js/app.js" defer></script>
 </head>
@@ -20,6 +21,8 @@
         <header>
             <h1>Recall</h1>
             <p>Quick quizzes that help your class remember what they learned weeks ago.</p>
+            <p id="storage-mode" class="storage-mode"></p>
+            <p id="error-banner" class="error-banner" role="alert" hidden></p>
         </header>
 
         <nav class="tabs">
